@@ -1,152 +1,177 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-<meta charset="UTF-8" />
-<title>Super Responsive Web Page - Tailwind CSS</title>
-<script src="https://cdn.tailwindcss.com"></script>
-
-<script>
-  function toggleMenu() {
-    document.getElementById("mobileMenu").classList.toggle("hidden");
-  }
-  function toggleDark() {
-    document.documentElement.classList.toggle("dark");
-  }
-</script>
-
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SuperWeb | Modern UI Experience</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    animation: {
+                        'shimmer': 'shimmer 2s linear infinite',
+                    },
+                    keyframes: {
+                        shimmer: {
+                            from: { backgroundPosition: '0 0' },
+                            to: { backgroundPosition: '-200% 0' },
+                        },
+                    },
+                },
+            },
+        }
+        function toggleMenu() { document.getElementById("mobileMenu").classList.toggle("hidden"); }
+        function toggleDark() { document.documentElement.classList.toggle("dark"); }
+    </script>
+    <style>
+        .glass { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.3); }
+        .dark .glass { background: rgba(17, 24, 39, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); }
+    </style>
 </head>
 
-<body class="bg-slate-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200 scroll-smooth">
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-200 transition-colors duration-300">
 
-<!-- Navbar -->
-<nav class="bg-white/80 dark:bg-gray-800/80 backdrop-blur shadow-md fixed w-full z-10">
-  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-    <h1 class="text-2xl font-bold text-indigo-600">SuperWeb</h1>
+<nav class="fixed w-full z-50 top-0 glass px-6 py-4 transition-all duration-300">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+        <div class="flex items-center gap-2">
+            <div class="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center text-white font-bold">S</div>
+            <h1 class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-500">SuperWeb</h1>
+        </div>
 
-    <!-- Desktop Menu -->
-    <ul class="hidden md:flex space-x-8 font-medium">
-      <li><a href="#" class="hover:text-indigo-600">Home</a></li>
-      <li><a href="#features" class="hover:text-indigo-600">Features</a></li>
-      <li><a href="#pricing" class="hover:text-indigo-600">Pricing</a></li>
-      <li><a href="#contact" class="hover:text-indigo-600">Contact</a></li>
-    </ul>
+        <ul class="hidden md:flex space-x-10 font-medium text-sm tracking-wide">
+            <li><a href="#" class="hover:text-indigo-600 transition-colors">Home</a></li>
+            <li><a href="#features" class="hover:text-indigo-600 transition-colors">Features</a></li>
+            <li><a href="#pricing" class="hover:text-indigo-600 transition-colors">Pricing</a></li>
+            <li><a href="#contact" class="hover:text-indigo-600 transition-colors">Contact</a></li>
+        </ul>
 
-    <div class="flex gap-4 items-center">
-      <!-- Dark Mode -->
-      <button onclick="toggleDark()" class="text-xl">🌙</button>
-      <!-- Mobile Menu -->
-      <button onclick="toggleMenu()" class="md:hidden text-2xl">☰</button>
+        <div class="flex gap-4 items-center">
+            <button onclick="toggleDark()" class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-all active:scale-90">
+                <span class="dark:hidden">🌙</span>
+                <span class="hidden dark:inline">☀️</span>
+            </button>
+            <button onclick="toggleMenu()" class="md:hidden p-2">☰</button>
+        </div>
     </div>
-  </div>
 
-  <!-- Mobile Menu -->
-  <div id="mobileMenu" class="hidden md:hidden bg-white dark:bg-gray-800 px-6 pb-4 space-y-3">
-    <a class="block hover:text-indigo-600" href="#">Home</a>
-    <a class="block hover:text-indigo-600" href="#features">Features</a>
-    <a class="block hover:text-indigo-600" href="#pricing">Pricing</a>
-    <a class="block hover:text-indigo-600" href="#contact">Contact</a>
-  </div>
+    <div id="mobileMenu" class="hidden md:hidden absolute top-full left-0 w-full bg-white dark:bg-slate-900 border-b dark:border-slate-800 p-6 space-y-4">
+        <a class="block font-medium hover:text-indigo-600" href="#">Home</a>
+        <a class="block font-medium hover:text-indigo-600" href="#features">Features</a>
+        <a class="block font-medium hover:text-indigo-600" href="#pricing">Pricing</a>
+        <a class="block font-medium hover:text-indigo-600" href="#contact">Contact</a>
+    </div>
 </nav>
 
-<!-- Hero -->
-<section class="pt-32 pb-20 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 text-white">
-  <div class="max-w-7xl mx-auto px-6 text-center">
-    <h2 class="text-4xl md:text-6xl font-extrabold mb-6">
-      Build Stunning Responsive Websites
-    </h2>
-    <p class="text-lg md:text-xl mb-8 opacity-90">
-      Fast • Modern • Mobile-first
-    </p>
-    <button class="bg-white text-indigo-600 px-8 py-3 rounded-full font-semibold shadow-lg hover:scale-110 transition">
-      Get Started 🚀
-    </button>
-  </div>
-</section>
-
-<!-- Stats -->
-<section class="max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-  <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-xl text-center hover:ring-4 ring-indigo-300 transition">
-    <p class="text-4xl">👥</p>
-    <p class="text-3xl font-bold text-indigo-600">10K+</p>
-    <p>Users</p>
-  </div>
-  <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-xl text-center hover:ring-4 ring-green-300 transition">
-    <p class="text-4xl">📂</p>
-    <p class="text-3xl font-bold text-green-600">120+</p>
-    <p>Projects</p>
-  </div>
-  <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-xl text-center hover:ring-4 ring-orange-300 transition">
-    <p class="text-4xl">⏰</p>
-    <p class="text-3xl font-bold text-orange-600">24/7</p>
-    <p>Support</p>
-  </div>
-  <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-xl text-center hover:ring-4 ring-red-300 transition">
-    <p class="text-4xl">🚀</p>
-    <p class="text-3xl font-bold text-red-600">99%</p>
-    <p>Uptime</p>
-  </div>
-</section>
-
-<!-- Features -->
-<section id="features" class="bg-white dark:bg-gray-900 py-20">
-  <div class="max-w-7xl mx-auto px-6 text-center">
-    <h3 class="text-3xl font-bold mb-12">Awesome Features</h3>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      <div class="p-6 rounded-xl shadow-lg hover:-translate-y-3 transition">
-        <h4 class="text-xl font-semibold mb-3">📱 Responsive</h4>
-        <p>Works perfectly on all devices.</p>
-      </div>
-      <div class="p-6 rounded-xl shadow-lg hover:-translate-y-3 transition">
-        <h4 class="text-xl font-semibold mb-3">⚡ Fast</h4>
-        <p>Rapid UI development with Tailwind.</p>
-      </div>
-      <div class="p-6 rounded-xl shadow-lg hover:-translate-y-3 transition">
-        <h4 class="text-xl font-semibold mb-3">🎨 Modern</h4>
-        <p>Clean, minimal, professional UI.</p>
-      </div>
+<section class="relative pt-48 pb-32 overflow-hidden">
+    <div class="absolute top-0 -z-10 h-full w-full bg-white dark:bg-slate-950">
+        <div class="absolute bottom-auto left-auto right-0 top-0 h-[500px] w-[500px] -translate-x-[30%] translate-y-[20%] rounded-full bg-[rgba(173,109,244,0.5)] opacity-50 blur-[80px]"></div>
     </div>
-  </div>
-</section>
-
-<!-- Testimonials (NEW SECTION) -->
-<section class="bg-slate-100 dark:bg-gray-800 py-20">
-  <div class="max-w-7xl mx-auto px-6 text-center">
-    <h3 class="text-3xl font-bold mb-12">What Users Say</h3>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      <div class="bg-white dark:bg-gray-900 p-6 rounded-xl shadow">
-        ⭐⭐⭐⭐⭐
-        <p class="mt-3">“Amazing UI and super responsive!”</p>
-      </div>
-      <div class="bg-white dark:bg-gray-900 p-6 rounded-xl shadow">
-        ⭐⭐⭐⭐⭐
-        <p class="mt-3">“Perfect for modern web projects.”</p>
-      </div>
-      <div class="bg-white dark:bg-gray-900 p-6 rounded-xl shadow">
-        ⭐⭐⭐⭐⭐
-        <p class="mt-3">“Loved the design and animations.”</p>
-      </div>
+    
+    <div class="max-w-5xl mx-auto px-6 text-center">
+        <span class="px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400">Version 2.0 is live</span>
+        <h2 class="text-5xl md:text-7xl font-black mt-8 mb-8 leading-[1.1] tracking-tight">
+            Design <span class="bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 via-purple-500 to-pink-500">Faster</span>, 
+            Build <span class="bg-clip-text text-transparent bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-600">Smarter</span>.
+        </h2>
+        <p class="text-lg md:text-xl mb-10 text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
+            Everything you need to ship production-ready sites in record time. Mobile-first by default, aesthetically pleasing by design.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <button class="bg-indigo-600 text-white px-10 py-4 rounded-xl font-bold shadow-xl shadow-indigo-500/20 hover:bg-indigo-700 transition-all hover:-translate-y-1 active:scale-95">
+                Get Started 🚀
+            </button>
+            <button class="glass px-10 py-4 rounded-xl font-bold hover:bg-white/50 transition-all active:scale-95">
+                View Documentation
+            </button>
+        </div>
     </div>
-  </div>
 </section>
 
-<!-- Contact -->
-<section id="contact" class="bg-white dark:bg-gray-900 py-20">
-  <div class="max-w-xl mx-auto px-6">
-    <h3 class="text-3xl font-bold text-center mb-8">Contact Us</h3>
-    <form class="space-y-4">
-      <input class="w-full p-3 border rounded focus:ring-2 focus:ring-indigo-600" placeholder="Name">
-      <input class="w-full p-3 border rounded focus:ring-2 focus:ring-indigo-600" placeholder="Email">
-      <textarea class="w-full p-3 border rounded focus:ring-2 focus:ring-indigo-600" placeholder="Message"></textarea>
-      <button class="w-full bg-indigo-600 text-white py-3 rounded font-semibold hover:bg-indigo-700">
-        Send Message
-      </button>
-    </form>
-  </div>
+<section class="max-w-7xl mx-auto px-6 -mt-10 mb-20">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
+        <div class="glass p-8 rounded-2xl text-center group transition-all hover:border-indigo-500/50">
+            <p class="text-sm font-bold text-slate-500 uppercase tracking-widest mb-2">Active Users</p>
+            <p class="text-4xl font-black text-indigo-600">10K+</p>
+        </div>
+        <div class="glass p-8 rounded-2xl text-center transition-all hover:border-green-500/50">
+            <p class="text-sm font-bold text-slate-500 uppercase tracking-widest mb-2">Projects</p>
+            <p class="text-4xl font-black text-green-600">120+</p>
+        </div>
+        <div class="glass p-8 rounded-2xl text-center transition-all hover:border-orange-500/50">
+            <p class="text-sm font-bold text-slate-500 uppercase tracking-widest mb-2">Live Support</p>
+            <p class="text-4xl font-black text-orange-600">24/7</p>
+        </div>
+        <div class="glass p-8 rounded-2xl text-center transition-all hover:border-red-500/50">
+            <p class="text-sm font-bold text-slate-500 uppercase tracking-widest mb-2">Uptime</p>
+            <p class="text-4xl font-black text-red-600">99.9%</p>
+        </div>
+    </div>
 </section>
 
-<!-- Footer -->
-<footer class="bg-gray-900 text-white text-center py-6">
-  © 2026 Super Responsive Web Page | Tailwind CSS
+<section id="features" class="py-24 bg-slate-50/50 dark:bg-slate-900/50">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16">
+            <h3 class="text-3xl md:text-4xl font-bold mb-4">Crafted for Excellence</h3>
+            <div class="h-1.5 w-20 bg-indigo-600 mx-auto rounded-full"></div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="glass p-10 rounded-3xl hover:shadow-2xl hover:shadow-indigo-500/10 transition-all duration-300 group">
+                <div class="w-12 h-12 bg-indigo-100 dark:bg-indigo-900/30 rounded-xl flex items-center justify-center mb-6 text-2xl group-hover:rotate-12 transition-transform">📱</div>
+                <h4 class="text-xl font-bold mb-4">Responsive 2.0</h4>
+                <p class="text-slate-600 dark:text-slate-400 leading-relaxed">Dynamic layouts that breathe and adapt effortlessly to any screen size.</p>
+            </div>
+            <div class="glass p-10 rounded-3xl hover:shadow-2xl hover:shadow-purple-500/10 transition-all duration-300 group">
+                <div class="w-12 h-12 bg-purple-100 dark:bg-purple-900/30 rounded-xl flex items-center justify-center mb-6 text-2xl group-hover:rotate-12 transition-transform">⚡</div>
+                <h4 class="text-xl font-bold mb-4">Turbo Speed</h4>
+                <p class="text-slate-600 dark:text-slate-400 leading-relaxed">Built with Tailwind's utility-first approach for instantaneous load times.</p>
+            </div>
+            <div class="glass p-10 rounded-3xl hover:shadow-2xl hover:shadow-pink-500/10 transition-all duration-300 group">
+                <div class="w-12 h-12 bg-pink-100 dark:bg-pink-900/30 rounded-xl flex items-center justify-center mb-6 text-2xl group-hover:rotate-12 transition-transform">🎨</div>
+                <h4 class="text-xl font-bold mb-4">Modern Aesthetics</h4>
+                <p class="text-slate-600 dark:text-slate-400 leading-relaxed">A minimal, clean interface that puts your content front and center.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="py-32">
+    <div class="max-w-xl mx-auto px-6">
+        <div class="glass p-8 md:p-12 rounded-[2rem] shadow-2xl">
+            <h3 class="text-3xl font-black text-center mb-10">Get in Touch</h3>
+            <form class="space-y-6">
+                <div>
+                    <label class="block text-sm font-bold mb-2 ml-1 text-slate-500">FULL NAME</label>
+                    <input class="w-full p-4 bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-4 focus:ring-indigo-500/20 focus:border-indigo-500 outline-none transition-all" placeholder="John Doe">
+                </div>
+                <div>
+                    <label class="block text-sm font-bold mb-2 ml-1 text-slate-500">EMAIL ADDRESS</label>
+                    <input class="w-full p-4 bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-4 focus:ring-indigo-500/20 focus:border-indigo-500 outline-none transition-all" placeholder="john@example.com">
+                </div>
+                <div>
+                    <label class="block text-sm font-bold mb-2 ml-1 text-slate-500">MESSAGE</label>
+                    <textarea rows="4" class="w-full p-4 bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-4 focus:ring-indigo-500/20 focus:border-indigo-500 outline-none transition-all" placeholder="Tell us about your project..."></textarea>
+                </div>
+                <button class="w-full bg-indigo-600 text-white py-4 rounded-xl font-bold text-lg hover:bg-indigo-700 shadow-lg shadow-indigo-500/30 transition-all hover:scale-[1.02] active:scale-95">
+                    Send Message
+                </button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<footer class="bg-slate-900 text-slate-400 py-12 px-6">
+    <div class="max-w-7xl mx-auto text-center">
+        <div class="flex justify-center gap-6 mb-8 text-sm font-medium">
+            <a href="#" class="hover:text-white transition-colors">Privacy</a>
+            <a href="#" class="hover:text-white transition-colors">Terms</a>
+            <a href="#" class="hover:text-white transition-colors">Twitter</a>
+        </div>
+        <p class="text-slate-500 text-sm italic">
+            © 2026 SuperWeb Experience. Handcrafted for the future.
+        </p>
+    </div>
 </footer>
 
 </body>
@@ -164,4 +189,5 @@
 * **Interactivity:** The modified version adds hover effects on cards and buttons to make the site feel more responsive to the user.
 * **Styling Polish:** The modified version uses larger border-radii (`rounded-xl`) and deeper shadows for a premium, modern feel.
 */
+
 
